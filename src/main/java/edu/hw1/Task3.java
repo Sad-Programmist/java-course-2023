@@ -1,6 +1,7 @@
 package edu.hw1;
 
-import java.util.Arrays;
+import java.util.IntSummaryStatistics;
+import java.util.stream.IntStream;
 
 public class Task3 {
 
@@ -11,23 +12,17 @@ public class Task3 {
         if (array1 == null || array2 == null || array1.length == 0 || array2.length == 0) {
             return false;
         }
-        int min1 = Arrays.stream(array1)
-            .min()
-            .getAsInt();
-        int min2 = Arrays.stream(array2)
-            .min()
-            .getAsInt();
-        int max1 = Arrays.stream(array1)
-            .max()
-            .getAsInt();
-        int max2 = Arrays.stream(array2)
-            .max()
-            .getAsInt();
+        IntStream stream1 = IntStream.of(array1);
+        IntSummaryStatistics summaryData1 = stream1.summaryStatistics();
+        int min1 = summaryData1.getMin();
+        int max1 = summaryData1.getMax();
 
-        if (min1 > min2 && max1 < max2) {
-            return true;
-        }
-        return false;
+        IntStream stream2 = IntStream.of(array2);
+        IntSummaryStatistics summaryData2 = stream2.summaryStatistics();
+        int min2 = summaryData2.getMin();
+        int max2 = summaryData2.getMax();
+
+        return min1 > min2 && max1 < max2;
     }
 
     public static boolean runTask3(int[] array1, int[] array2) {
