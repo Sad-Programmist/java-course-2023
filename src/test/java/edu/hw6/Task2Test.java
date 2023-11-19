@@ -23,7 +23,9 @@ public class Task2Test {
         Files.walk(tempDir)
             .map(Path::toFile)
             .forEach(File::delete);
-        Files.createDirectory(tempDir);
+        if (!Files.exists(tempDir)) {
+            Files.createDirectory(tempDir);
+        }
         existingFilePath = Files.createFile(tempDir.resolve("testFile.txt"));
         nonExistingFilePath = tempDir.resolve("nonExistingFile.txt");
     }

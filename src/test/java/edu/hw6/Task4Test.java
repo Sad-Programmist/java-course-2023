@@ -22,7 +22,9 @@ public class Task4Test {
         Files.walk(tempDir)
             .map(Path::toFile)
             .forEach(File::delete);
-        Files.createDirectory(tempDir);
+        if (!Files.exists(tempDir)) {
+            Files.createDirectory(tempDir);
+        }
     }
 
     @Test

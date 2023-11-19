@@ -22,7 +22,9 @@ public class Task3Test {
         Files.walk(tempDir)
             .map(Path::toFile)
             .forEach(File::delete);
-        Files.createDirectory(tempDir);
+        if (!Files.exists(tempDir)) {
+            Files.createDirectory(tempDir);
+        }
         Files.createFile(tempDir.resolve("testTXT.txt"));
         Files.createFile(tempDir.resolve("15_11_23.txt"));
         Files.createFile(tempDir.resolve("testPNG.png"));
