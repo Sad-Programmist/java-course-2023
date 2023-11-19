@@ -47,8 +47,8 @@ public class Task3Test {
 
         // then
         Path[] expected = {
-            Paths.get(tempDir + "\\testDir1"),
-            Paths.get(tempDir + "\\testDir2")
+            Paths.get(tempDir + "/testDir1"),
+            Paths.get(tempDir + "/testDir2")
         };
 
         int[] count = {0};
@@ -69,13 +69,13 @@ public class Task3Test {
 
         // then
         Path[] expected = {
-            Paths.get(tempDir + "\\15_11_23.txt"),
-            Paths.get(tempDir + "\\18_11_23.PNG"),
-            Paths.get(tempDir + "\\testJPEG1.JPEG"),
-            Paths.get(tempDir + "\\testJPEG2.jpeg"),
-            Paths.get(tempDir + "\\testJpeg3.JPEG"),
-            Paths.get(tempDir + "\\testPNG.png"),
-            Paths.get(tempDir + "\\testTXT.txt")
+            Paths.get(tempDir + "/15_11_23.txt"),
+            Paths.get(tempDir + "/18_11_23.PNG"),
+            Paths.get(tempDir + "/testJPEG1.JPEG"),
+            Paths.get(tempDir + "/testJPEG2.jpeg"),
+            Paths.get(tempDir + "/testJpeg3.JPEG"),
+            Paths.get(tempDir + "/testPNG.png"),
+            Paths.get(tempDir + "/testTXT.txt")
         };
 
         int[] count = {0};
@@ -97,8 +97,8 @@ public class Task3Test {
 
         // then
         Path[] expected = {
-            Paths.get(tempDir + "\\18_11_23.PNG"),
-            Paths.get(tempDir + "\\testPNG.png")
+            Paths.get(tempDir + "/18_11_23.PNG"),
+            Paths.get(tempDir + "/testPNG.png")
         };
 
         int[] count = {0};
@@ -120,11 +120,11 @@ public class Task3Test {
 
         // then
         Path[] expected = {
-            Paths.get(tempDir + "\\15_11_23.txt"),
-            Paths.get(tempDir + "\\testJPEG1.JPEG"),
-            Paths.get(tempDir + "\\testJPEG2.jpeg"),
-            Paths.get(tempDir + "\\testJpeg3.JPEG"),
-            Paths.get(tempDir + "\\testTXT.txt")
+            Paths.get(tempDir + "/15_11_23.txt"),
+            Paths.get(tempDir + "/testJPEG1.JPEG"),
+            Paths.get(tempDir + "/testJPEG2.jpeg"),
+            Paths.get(tempDir + "/testJpeg3.JPEG"),
+            Paths.get(tempDir + "/testTXT.txt")
         };
 
         int[] count = {0};
@@ -139,15 +139,15 @@ public class Task3Test {
     void abstractFilter5() throws IOException {
         // given
         DirectoryStream.Filter<Path> filter = REGULAR_FILE
-            .and(regexContains("\\d{2}_d{2}_d{2}"));
+            .and(regexContains("/d{2}_d{2}_d{2}"));
 
         // when
         DirectoryStream<Path> result = Files.newDirectoryStream(tempDir, filter);
 
         // then
         Path[] expected = {
-            Paths.get(tempDir + "\\15_11_23.txt"),
-            Paths.get(tempDir + "\\18_11_23.PNG")
+            Paths.get(tempDir + "/15_11_23.txt"),
+            Paths.get(tempDir + "/18_11_23.PNG")
         };
 
         int[] count = {0};
@@ -162,14 +162,14 @@ public class Task3Test {
     void abstractFilter6() throws IOException {
         // given
         DirectoryStream.Filter<Path> filter = REGULAR_FILE
-            .and(regexMatches("\\d{2}_d{2}_d{2}.txt"));
+            .and(regexMatches("/d{2}_d{2}_d{2}.txt"));
 
         // when
         DirectoryStream<Path> result = Files.newDirectoryStream(tempDir, filter);
 
         // then
         Path[] expected = {
-            Paths.get(tempDir + "\\15_11_23.txt")
+            Paths.get(tempDir + "/15_11_23.txt")
         };
 
         int[] count = {0};
@@ -184,7 +184,7 @@ public class Task3Test {
     void abstractFilter7() throws IOException {
         // given
         DirectoryStream.Filter<Path> filter = REGULAR_FILE
-            .and(regexMatches("\\d{2}_d{2}_d{2}"))
+            .and(regexMatches("/d{2}_d{2}_d{2}"))
             .and(globMatches("*.png"));
 
         // when
@@ -192,7 +192,7 @@ public class Task3Test {
 
         // then
         Path[] expected = {
-            Paths.get(tempDir + "\\18_11_23.PNG")
+            Paths.get(tempDir + "/18_11_23.PNG")
         };
 
         int[] count = {0};
@@ -214,15 +214,15 @@ public class Task3Test {
 
         // then
         Path[] expected = {
-            Paths.get(tempDir + "\\15_11_23.txt"),
-            Paths.get(tempDir + "\\18_11_23.PNG"),
-            Paths.get(tempDir + "\\testDir1"),
-            Paths.get(tempDir + "\\testDir2"),
-            Paths.get(tempDir + "\\testJPEG1.JPEG"),
-            Paths.get(tempDir + "\\testJPEG2.jpeg"),
-            Paths.get(tempDir + "\\testJpeg3.JPEG"),
-            Paths.get(tempDir + "\\testPNG.png"),
-            Paths.get(tempDir + "\\testTXT.txt")
+            Paths.get(tempDir + "/15_11_23.txt"),
+            Paths.get(tempDir + "/18_11_23.PNG"),
+            Paths.get(tempDir + "/testDir1"),
+            Paths.get(tempDir + "/testDir2"),
+            Paths.get(tempDir + "/testJPEG1.JPEG"),
+            Paths.get(tempDir + "/testJPEG2.jpeg"),
+            Paths.get(tempDir + "/testJpeg3.JPEG"),
+            Paths.get(tempDir + "/testPNG.png"),
+            Paths.get(tempDir + "/testTXT.txt")
         };
 
         int[] count = {0};
@@ -265,13 +265,13 @@ public class Task3Test {
 
         // then
         Path[] expected = {
-            Paths.get(tempDir + "\\15_11_23.txt"),
-            Paths.get(tempDir + "\\18_11_23.PNG"),
-            Paths.get(tempDir + "\\testJPEG1.JPEG"),
-            Paths.get(tempDir + "\\testJPEG2.jpeg"),
-            Paths.get(tempDir + "\\testJpeg3.JPEG"),
-            Paths.get(tempDir + "\\testPNG.png"),
-            Paths.get(tempDir + "\\testTXT.txt")
+            Paths.get(tempDir + "/15_11_23.txt"),
+            Paths.get(tempDir + "/18_11_23.PNG"),
+            Paths.get(tempDir + "/testJPEG1.JPEG"),
+            Paths.get(tempDir + "/testJPEG2.jpeg"),
+            Paths.get(tempDir + "/testJpeg3.JPEG"),
+            Paths.get(tempDir + "/testPNG.png"),
+            Paths.get(tempDir + "/testTXT.txt")
         };
 
         int[] count = {0};
@@ -294,13 +294,13 @@ public class Task3Test {
 
         // then
         Path[] expected = {
-            Paths.get(tempDir + "\\15_11_23.txt"),
-            Paths.get(tempDir + "\\18_11_23.PNG"),
-            Paths.get(tempDir + "\\testJPEG1.JPEG"),
-            Paths.get(tempDir + "\\testJPEG2.jpeg"),
-            Paths.get(tempDir + "\\testJpeg3.JPEG"),
-            Paths.get(tempDir + "\\testPNG.png"),
-            Paths.get(tempDir + "\\testTXT.txt")
+            Paths.get(tempDir + "/15_11_23.txt"),
+            Paths.get(tempDir + "/18_11_23.PNG"),
+            Paths.get(tempDir + "/testJPEG1.JPEG"),
+            Paths.get(tempDir + "/testJPEG2.jpeg"),
+            Paths.get(tempDir + "/testJpeg3.JPEG"),
+            Paths.get(tempDir + "/testPNG.png"),
+            Paths.get(tempDir + "/testTXT.txt")
         };
 
         int[] count = {0};
