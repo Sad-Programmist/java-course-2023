@@ -12,19 +12,22 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class ReadUtilsTest {
 
-    @TempDir
-    static Path tempDir;
+    private static Path tempDir = Path.of("./src/test/res/project3");
 
     private static Path txt1;
     private static Path txt2;
 
     @BeforeAll
     static void setUpForAll() throws IOException {
+        Files.walk(tempDir)
+            .filter(Files::isRegularFile)
+            .map(Path::toFile)
+            .forEach(File::delete);
+
         txt1 = Files.createFile(tempDir.resolve("test1.txt"));
         try (BufferedWriter writer1 = new BufferedWriter(new FileWriter(tempDir + "\\test1.txt"))) {
             writer1.write("line1");

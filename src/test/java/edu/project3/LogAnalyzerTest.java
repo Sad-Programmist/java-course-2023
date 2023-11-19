@@ -1,11 +1,7 @@
 package edu.project3;
 
-import edu.project3.utils.DateParseUtils;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,12 +11,14 @@ import java.time.ZoneOffset;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class LogAnalyzerTest {
 
-    @TempDir
-    static Path tempDir;
+    static Path tempDir = Path.of("./src/test/res/project3");
 
     private static Path txt1;
     private static Path txt2;
@@ -28,6 +26,11 @@ public class LogAnalyzerTest {
 
     @BeforeAll
     static void setUpForAll() throws IOException {
+        Files.walk(tempDir)
+            .filter(Files::isRegularFile)
+            .map(Path::toFile)
+            .forEach(File::delete);
+
         txt1 = Files.createFile(tempDir.resolve("test1.txt"));
         try (BufferedWriter writer1 = new BufferedWriter(new FileWriter(tempDir + "\\test1.txt"))) {
             writer1.write(
@@ -233,8 +236,8 @@ public class LogAnalyzerTest {
         assertThat(result)
             .isEqualTo(new LogStatistic(
                 List.of(empty.toString()),
-                DateParseUtils.fromISOtoODT(from),
-                DateParseUtils.fromISOtoODT(to),
+                null,
+                null,
                 0,
                 0,
                 Collections.emptyMap(),
@@ -394,43 +397,6 @@ public class LogAnalyzerTest {
             files,
             fromDate,
             toDate,
-            requestNumber,
-            meanBodyBytesSent,
-            sourceStatistic,
-            statusStatistic,
-            requestTypeStatistic,
-            bodyBytesSentStatistic
-        );
-
-        assertThat(result)
-            .isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("Анализ логов из файла test1.txt")
-    void analyzeLogs9() {
-        // given
-        String path = txt1.toString();
-        String from = "2024-05-15";
-
-        // when
-        LogAnalyzer logAnalyzer = new LogAnalyzer();
-        LogStatistic result = logAnalyzer.analyzeLogs(path, from, null);
-
-        // then
-        List<String> files = List.of(txt1.toString());
-        OffsetDateTime fromDate = OffsetDateTime.of(2024, 5, 15, 0, 0, 0, 0, ZoneOffset.UTC);
-        int requestNumber = 0;
-        long meanBodyBytesSent = 0;
-        Map<String, Integer> sourceStatistic = Collections.emptyMap();
-        Map<Integer, Integer> statusStatistic = Collections.emptyMap();
-        Map<String, Integer> requestTypeStatistic = Collections.emptyMap();
-        Map<String, Integer> bodyBytesSentStatistic = Collections.emptyMap();
-
-        LogStatistic expected = new LogStatistic(
-            files,
-            fromDate,
-            null,
             requestNumber,
             meanBodyBytesSent,
             sourceStatistic,

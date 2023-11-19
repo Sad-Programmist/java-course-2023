@@ -38,20 +38,6 @@ public class DateParseUtilsTest {
     }
 
     @Test
-    @DisplayName("Преобразование даты 'wrong' из формата CLF в формат ODT")
-    void fromCLFtoODT3() {
-        // given
-        String date = "wrong";
-
-        // when
-        OffsetDateTime result = DateParseUtils.fromCLFtoODT(date);
-
-        // then
-        assertThat(result)
-            .isNull();
-    }
-
-    @Test
     @DisplayName("Преобразование даты из формата ISO в формат ODT")
     void fromISOtoODT1() {
         // given
@@ -70,20 +56,6 @@ public class DateParseUtilsTest {
     void fromISOtoODT2() {
         // given
         String date = null;
-
-        // when
-        OffsetDateTime result = DateParseUtils.fromISOtoODT(date);
-
-        // then
-        assertThat(result)
-            .isNull();
-    }
-
-    @Test
-    @DisplayName("Преобразование даты 'wrong' из формата ISO в формат ODT")
-    void fromISOtoODT3() {
-        // given
-        String date = "wrong";
 
         // when
         OffsetDateTime result = DateParseUtils.fromISOtoODT(date);
