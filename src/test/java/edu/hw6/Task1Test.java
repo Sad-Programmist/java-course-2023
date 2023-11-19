@@ -22,6 +22,7 @@ public class Task1Test {
         Files.walk(tempDir)
             .map(Path::toFile)
             .forEach(File::delete);
+        Files.createDirectory(tempDir);
     }
 
     @Test
