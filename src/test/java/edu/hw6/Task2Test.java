@@ -21,7 +21,6 @@ public class Task2Test {
     @BeforeAll
     static void setUpForAll() throws IOException {
         Files.walk(tempDir)
-            .filter(Files::isRegularFile)
             .map(Path::toFile)
             .forEach(File::delete);
         existingFilePath = Files.createFile(tempDir.resolve("testFile.txt"));

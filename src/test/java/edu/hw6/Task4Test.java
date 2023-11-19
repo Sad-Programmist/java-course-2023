@@ -20,7 +20,6 @@ public class Task4Test {
     @BeforeEach
     void clearDir() throws IOException {
         Files.walk(tempDir)
-            .filter(Files::isRegularFile)
             .map(Path::toFile)
             .forEach(File::delete);
     }
