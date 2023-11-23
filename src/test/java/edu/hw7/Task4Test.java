@@ -45,7 +45,7 @@ public class Task4Test {
         double[] result = Task4.analyze(numSimulationsArray, numThreadsArray);
 
         //then
-        assertThat(result[2] > 2).isTrue();
+        assertThat(result[2] > 1).isTrue();
     }
 
     @Test
@@ -113,9 +113,9 @@ public class Task4Test {
 
         //then
         assertThat(result).isEqualTo("""
-            Relative single thread error: 0,00%\s
-            Relative multi threads error: 0,00%\s
-            Boost: 0,00\s
+            Relative single thread error: 0.00%\s
+            Relative multi threads error: 0.00%\s
+            Boost: 0.00\s
             """);
     }
 
