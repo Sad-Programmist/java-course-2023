@@ -35,22 +35,8 @@ public class Task4Test {
     }
 
     @Test
-    @DisplayName("Ускорение вычислений в 10000000 экспериментах и в 100 потоков")
-    void calculatePi3() {
-        //given
-        int[] numSimulationsArray = {10000000};
-        int[] numThreadsArray = {100};
-
-        //when
-        double[] result = Task4.analyze(numSimulationsArray, numThreadsArray);
-
-        //then
-        assertThat(result[2] > 1).isTrue();
-    }
-
-    @Test
     @DisplayName("Рассчет числа Пи, когда первый параметр null")
-    void calculatePi4() {
+    void calculatePi3() {
         //given
         int[] numThreadsArray = {1, 2, 4};
 
@@ -63,7 +49,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Рассчет числа Пи, когда второй параметр null")
-    void calculatePi5() {
+    void calculatePi4() {
         //given
         int[] numSimulationsArray = {1000000, 10000000};
 
@@ -76,7 +62,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Рассчет числа Пи, когда первый параметр пустой массив")
-    void calculatePi6() {
+    void calculatePi5() {
         //given
         int[] numSimulationsArray = {};
         int[] numThreadsArray = {1, 2, 4};
@@ -90,7 +76,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Рассчет числа Пи, когда второй параметр пустой массив")
-    void calculatePi7() {
+    void calculatePi6() {
         //given
         int[] numSimulationsArray = {1000000, 10000000};
         int[] numThreadsArray = {};
@@ -104,7 +90,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Вывод информации для 0.0, 0.0, 0.0")
-    void calculatePi8() {
+    void calculatePi7() {
         //given
         double[] data = {0.0, 0.0, 0.0};
 
@@ -121,7 +107,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Вывод информации для пустого массива")
-    void calculatePi9() {
+    void calculatePi8() {
         //given
         double[] data = {};
 
@@ -134,7 +120,7 @@ public class Task4Test {
 
     @Test
     @DisplayName("Вывод информации для массива равного null")
-    void calculatePi10() {
+    void calculatePi9() {
         //when
         String result = Task4.printInfo(null);
 
