@@ -119,6 +119,6 @@ public class Task2Test {
 
         // then
         assertThat(result).isEqualTo(
-            "Files with size more than 0B and extension .txt: [src\\test\\java\\edu\\hw9\\resourses\\test1.txt]");
+            "Files with size more than 0B and extension .txt: [src/test/java/edu/hw9/resourses/test1.txt]");
     }
 }
